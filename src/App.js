@@ -5,6 +5,7 @@ import Home from './components/Home';
 import EmailForm from './components/EmailForm';
 import firebase from 'firebase/app';
 import 'firebase/database';
+import potato;
 
 
 const firebaseConfig = {
@@ -21,12 +22,15 @@ firebase.initializeApp(firebaseConfig);
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/email" component={EmailForm} />
-      </Switch>
-    </Router>
+    <div>
+      <h1>hello</h1>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/email" component={EmailForm} />
+        </Switch>
+      </Router>
+    </div>
   );
 }
 
