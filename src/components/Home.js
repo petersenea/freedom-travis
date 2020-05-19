@@ -10,7 +10,7 @@ import ReactTooltip from "react-tooltip";
 import { Link } from 'react-router-dom'
 
 export default function Home() {
-  console.log(process.env.REACT_APP_API_URL);
+  // console.log(process.env.REACT_APP_API_URL);
   // const [idocNum, setIdocNum] = useState("");
 
   // Select icon based on return (innocent until proven guilty, unless they were already guilty..?)
