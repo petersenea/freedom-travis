@@ -7,6 +7,6 @@ global.MutationObserver = window.MutationObserver;
 
 test('renders learn react link', () => {
   const { getByText } = render(<App />);
-  const linkElement = getByText(/freedom generator/i);
+  const linkElement = getByText(/hello/i);
   expect(linkElement).toBeInTheDocument();
 });
