@@ -21,7 +21,6 @@ firebase.initializeApp(firebaseConfig);
 function App() {
   return (
     <div>
-      <h1>hello</h1>
       <Router>
         <Switch>
           <Route exact path="/" component={Home} />
