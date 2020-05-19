@@ -5,8 +5,6 @@ import Home from './components/Home';
 import EmailForm from './components/EmailForm';
 import firebase from 'firebase/app';
 import 'firebase/database';
-import potato;
-
 
 const firebaseConfig = {
   apiKey: "AIzaSyA5lzLkdABb8wav-5S6SS6IlVrAUbEAt3g",
