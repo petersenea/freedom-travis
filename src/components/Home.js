@@ -8,7 +8,6 @@ import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
 import { green, red } from '@material-ui/core/colors';
 import ReactTooltip from "react-tooltip";
 import { Link } from 'react-router-dom'
-import 'this-module-does-not-exist';
 
 export default function Home() {
   // console.log(process.env.REACT_APP_API_URL);
@@ -30,22 +29,27 @@ export default function Home() {
   const [submitted, setSubmitted] = useState('');
 
   const onSubmit = data => {
-    console.log("data:");
-    console.log(data);
-    setSubmitted('True');
-    // handleCriteriaChange(101);
-    // data.preventDefault();
-    var idocNum = data["IDOC_Number"];
-    var medical_furlough = data["medical_furlough"];
-    console.log(medical_furlough)
-    //check eligibility
-    var eligibility = return_eligibility(idocNum, medical_furlough)
-    setPassed(eligibility)
-    if (eligibility) {
-      if (eligibility.includes(" Home Detention" || eligibility.includes(" Electric Monitoring") || eligibility.includes(" Medical Furlough"))) {
-        document.getElementById("eligibility").innerHTML = eligibility.split(' ').slice(0, 2) + ' is eligible to petition for release.';
+    if (data["IDOC_Number"] === "") {
+      document.getElementById("error-message").innerHTML = "IDOC Number is required"
+    }
+    else {
+      console.log("data:");
+      console.log(data);
+      setSubmitted('True');
+      // handleCriteriaChange(101);
+      // data.preventDefault();
+      var idocNum = data["IDOC_Number"];
+      var medical_furlough = data["medical_furlough"];
+      console.log(medical_furlough)
+      //check eligibility
+      var eligibility = return_eligibility(idocNum, medical_furlough)
+      setPassed(eligibility)
+      if (eligibility) {
+        if (eligibility.includes(" Home Detention" || eligibility.includes(" Electric Monitoring") || eligibility.includes(" Medical Furlough"))) {
+          document.getElementById("eligibility").innerHTML = eligibility.split(' ').slice(0, 2) + ' is eligible to petition for release.';
+        }
+        else { document.getElementById("eligibility").innerHTML = eligibility.split(' ').slice(0, 2) + ' is not eligible to petition for release.' }
       }
-      else { document.getElementById("eligibility").innerHTML = eligibility.split(' ').slice(0, 2) + ' is not eligible to petition for release.' }
     }
   };
 
@@ -70,11 +74,11 @@ export default function Home() {
           <Grid container justify="center">
             <Grid item>
               <FormControlLabel
-                control={<TextField name="IDOC_Number" inputRef={register({ required: true })} />}
+                control={<TextField name="IDOC_Number" inputRef={register} />}
                 label="IDOC Number: &nbsp;"
                 labelPlacement="start"
               />
-              {errors.IDOC_Number && <p className="error">IDOC Number is required.</p>}
+              <p data-testid="error-message" id="error-message"></p>
             </Grid>
           </Grid>
           <Grid container justify="center">
@@ -86,11 +90,11 @@ export default function Home() {
               />
             </Grid>
           </Grid>
-          <Button type="submit" variant="contained" >Import Data</Button>
+          <Button data-testid="import-data" type="submit" variant="contained" >Import Data</Button>
           <br />
           <br />
           <br />
-          {submitted &&
+          {/* {submitted &&
             <div className="criteria">
               <div className="criterion">Medical furlough
 
@@ -120,15 +124,15 @@ export default function Home() {
               <div className="sub-criterion">Not an excluded offense
                 {passed.includes(" Not an excluded offense Electronic") ? <CheckCircleIcon style={{ color: green[500] }} /> : <CloseRoundedIcon style={{ color: red[500] }} />}
               </div>
-            </div>}
-            {submitted && <Link to={{pathname:"/email", state:passed}}>
-                <Typography>Petition for release</Typography>
-              </Link>}
+            </div>} */}
+          {/* {submitted && <Link to={{ pathname: "/email", state: passed }}>
+            <Typography>Petition for release</Typography>
+          </Link>} */}
         </form>
         {/* add by zhu, will be deleted */}
         {/* or window.location.href */}
-        <Button onClick={() => { window.open('/email') }}>test Button</Button>
-        <div id="eligibility"></div>
+        {/* <Button onClick={() => { window.open('/email') }}>test Button</Button>
+        <div id="eligibility"></div> */}
       </div>
     </div>
   );
