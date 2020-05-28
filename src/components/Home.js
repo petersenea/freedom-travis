@@ -8,7 +8,6 @@ import CloseRoundedIcon from '@material-ui/icons/CloseRounded';
 import { green, red } from '@material-ui/core/colors';
 import ReactTooltip from "react-tooltip";
 import { Link } from 'react-router-dom'
-import 'this-module-does-not-exist';
 
 export default function Home() {
   // console.log(process.env.REACT_APP_API_URL);
@@ -79,7 +78,6 @@ export default function Home() {
                 label="IDOC Number: &nbsp;"
                 labelPlacement="start"
               />
-              <p data-testid="error-message" id="error-message"></p>
             </Grid>
           </Grid>
           <Grid container justify="center">
