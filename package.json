@@ -18,6 +18,7 @@
     "react-tooltip": "^4.2.6"
   },
   "scripts": {
+    "cypress:open": "cypress open",
     "start": "react-app-env --env-file=config/test.env start",
     "build": "react-app-env --env-file=config/production.env build",
     "start:production": "react-app-env --env-file=config/production.env start",
@@ -41,6 +42,7 @@
   },
   "devDependencies": {
     "@testing-library/react": "^9.5.0",
+    "cypress": "^4.7.0",
     "react-app-env": "^1.2.3"
   }
 }
